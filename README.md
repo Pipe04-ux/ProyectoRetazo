@@ -1,4 +1,4 @@
-# Retazo (nombre temporal) — Moda a la medida, justa y sostenible
+# Retazo  — Moda a la medida, justa y sostenible
 
 > Marketplace virtual de moda donde el cliente diseña lo que imagina, el artesano trabaja con autonomía y el material sobrante se recupera en lugar de desecharse.
 
