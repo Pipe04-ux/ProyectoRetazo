@@ -144,7 +144,7 @@ Video demostrativo del flujo completo: [Ver demo en video]([COMPLETAR: ENLACE DE
 
 | Vista | Captura | Descripción |
 | :--- | :---: | :--- |
-| **Personalizador de prenda** | ![Personalizador]([COMPLETAR: ruta/archivo captura 1]) | Selección de tipo de prenda, tela, color, medidas, detalles y frase estampada. |
+| **Personalizador de prenda** | ![Personalizador](Screenshot 2026-11-18 145109.png) | Selección de tipo de prenda, tela, color, medidas, detalles y frase estampada. |
 | **Selección de artesano** | ![Artesanos]([COMPLETAR: ruta/archivo captura 2]) | Listado de artesanos autónomos con tarifas y tiempos de entrega estimados. |
 | **Envío y pasarela de pago** | ![Pago]([COMPLETAR: ruta/archivo captura 3]) | Formulario de envío y validación de pago simulado (rechazo y aprobación). |
 | **Panel de artesano y guía** | ![Panel Artesano]([COMPLETAR: ruta/archivo captura 4]) | Gestión de pedidos recibidos, aceptación y asignación de número de guía. |
