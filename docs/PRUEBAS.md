@@ -24,6 +24,7 @@ Método: **pensar en voz alta**. La persona usa el prototipo y el equipo no la a
 
 Cada fila con gravedad 2 o 3 se convierte en un Issue de GitHub y se corrige en una rama.
 # Registro de Pruebas y Verificación — Versión v0.3
+# Registro de Pruebas y Verificación — Versión v0.3
 
 ## 1. Verificación interna del equipo (Recorrido funcional)
 - **Responsables:** Santiago Rodríguez, David Fonseca, Felipe Pinilla y Lucy Lizeth.
@@ -32,35 +33,27 @@ Cada fila con gravedad 2 o 3 se convierte en un Issue de GitHub y se corrige en 
 
 | ID | Flujo verificado | Estado técnico | Observación real del equipo |
 | :--- | :--- | :--- | :--- |
-| V-01 | Diseño de vestido (tipo, tela, color, medidas, detalles y frase estampada) | Funcional | [COMPLETAR: ej. si algún campo requiere mejor explicación o ajuste visual] |
-| V-02 | Selección de artesano autónomo (visualización de precio y plazo) | Funcional | [COMPLETAR: observación real del equipo] |
-| V-03 | Formulario de envío y validación de pago (tarjeta `0000` rechazada y `4242 4242 4242 4242` aprobada) | Funcional | [COMPLETAR: observación real del equipo] |
-| V-04 | Cambio a rol artesano, aceptación del pedido y registro de guía | Funcional | [COMPLETAR: observación real del equipo] |
-| V-05 | Regreso a rol cliente y consulta de seguimiento actualizado | Funcional | [COMPLETAR: observación real del equipo] |
-| V-06 | Módulo de recolección y reutilización de retazos y ropa vieja | Funcional | [COMPLETAR: observación real del equipo] |
+| V-01 | Diseño de vestido (tipo, tela, color, medidas, detalles y frase estampada) | Funcional | El flujo de configuración responde bien, pero la vista previa de las prendas y las imágenes son aún esquemáticas y necesitan acercarse a una representación más real. |
+| V-02 | Selección de artesano autónomo (visualización de precio y plazo) | Funcional | Muestra tarifas y plazos sin fallos; falta integrar fotografías reales de los talleres y prendas confeccionadas (planificado en backlog). |
+| V-03 | Formulario de envío y validación de pago (tarjeta `0000` rechazada y `4242 4242 4242 4242` aprobada) | Funcional | Ambas validaciones (rechazo y aprobación) operan correctamente sin bloquear la navegación. |
+| V-04 | Cambio a rol artesano, aceptación del pedido y registro de guía | Funcional | La transición de rol y la actualización del estado de la orden funcionan según lo esperado en `localStorage`. |
+| V-05 | Regreso a rol cliente y consulta de seguimiento actualizado | Funcional | El cliente visualiza de inmediato el cambio de estado y el número de guía asignado. |
+| V-06 | Módulo de recolección y reutilización de retazos y ropa vieja | Funcional | Cumple el flujo informativo y de registro, aunque requiere material visual más realista para ilustrar la recolección y reutilización. |
 
 ---
 
-## 2. Hallazgos internos (Plantilla de fallos / mejoras detectadas)
+## 2. Hallazgos internos (Oportunidades de mejora detectadas)
 
-> Registro interno del equipo para alimentar los Issues de `docs/BACKLOG.md`:
-
-### Hallazgo #1: [COMPLETAR: Título corto de algo incómodo o mejorable que notaron al probar]
+### Hallazgo #1: Baja fidelidad visual en la representación de prendas e imágenes
 - **Detectado por:** Equipo Retazo (revisión interna v0.3)
-- **Gravedad:** [COMPLETAR: 1 = leve, 2 = moderado, 3 = impide avanzar]
-- **Qué pasó:** [COMPLETAR: descripción real de lo que notaron en la interfaz o flujo]
-- **Solución propuesta (plan):** [COMPLETAR: ajuste previsto para la siguiente versión]
-
-### Hallazgo #2: [COMPLETAR: Segundo detalle o mejora detectada por el equipo]
-- **Detectado por:** Equipo Retazo (revisión interna v0.3)
-- **Gravedad:** [COMPLETAR: 1 = leve, 2 = moderado, 3 = impide avanzar]
-- **Qué pasó:** [COMPLETAR: descripción real de lo que notaron en la interfaz o flujo]
-- **Solución propuesta (plan):** [COMPLETAR: ajuste previsto para la siguiente versión]
+- **Gravedad:** 2 (Moderado — no bloquea el flujo técnico, pero reduce la confianza visual del comprador)
+- **Qué pasó:** Aunque todo el recorrido de personalización y compra es funcional, las imágenes y la previsualización de las prendas se ven todavía como un prototipo básico y no muestran con suficiente realismo las texturas, cortes o acabados finales.
+- **Solución propuesta (plan):** Reemplazar los recursos gráficos básicos por mockups realistas por tipo de prenda y tela, además de incorporar fotografías reales de trabajos en los perfiles de artesanos.
 
 ---
 
 ## 3. Plan de pruebas con usuarios externos (Pendiente)
-- **Estado:** Pendiente de ejecución (corresponde al primer bloque de `docs/BACKLOG.md`).
+- **Estado:** Pendiente de ejecución (primer bloque de `docs/BACKLOG.md`).
 - **Muestra planificada:** 3 a 5 participantes externos (perfiles de cliente comprador y confeccionista/artesano).
 - **Tareas planificadas:**
   1. Configurar un vestido personalizado con frase estampada.
@@ -71,6 +64,7 @@ Cada fila con gravedad 2 o 3 se convierte en un Issue de GitHub y se corrige en 
 
 | ID | Participante / Perfil | Tarea evaluada | Resultado | Tiempo | Notas reales | Mejora propuesta |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| P-01 | [PENDIENTE] | Flujo completo cliente y artesano | [PENDIENTE] | [PENDIENTE] | [PENDIENTE] | [PENDIENTE] |
-| P-02 | [PENDIENTE] | Flujo completo cliente y artesano | [PENDIENTE] | [PENDIENTE] | [PENDIENTE] | [PENDIENTE] |
-| P-03 | [PENDIENTE] | Flujo completo cliente y artesano | [PENDIENTE] | [PENDIENTE] | [PENDIENTE] | [PENDIENTE] |
+| P-01 | [PENDIENTE] | Flujo completo cliente y artesano | [PENDIENTE] | [PENDIENTE] | [COMPLETAR: notas tras ejecutar prueba] | [PENDIENTE] |
+| P-02 | [PENDIENTE] | Flujo completo cliente y artesano | [PENDIENTE] | [PENDIENTE] | [COMPLETAR: notas tras ejecutar prueba] | [PENDIENTE] |
+| P-03 | [PENDIENTE] | Flujo completo cliente y artesano | [PENDIENTE] | [PENDIENTE] | [COMPLETAR: notas tras ejecutar prueba] | [PENDIENTE] |
+ 
