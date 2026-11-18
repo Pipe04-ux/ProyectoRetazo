@@ -26,7 +26,7 @@
     const m = d.medidas || { pecho: 98, cintura: 84, largo: 72 };
     const sx = (0.86 + ((m.pecho - 80) / 50) * 0.28).toFixed(3);
     const sy = (0.86 + ((m.largo - 50) / 60) * 0.28).toFixed(3);
-    const fg = lum(d.color) > 0.6 ? "#1B1740" : "#FFFFFF";
+    const fg = lum(d.color) > 0.6 ? "#0F0F0E" : "#FFFFFF";
     const has = (x) => (d.detalles || []).includes(x);
 
     let defs = `<clipPath id="${id}c"><path d="${path}"/></clipPath>`;
@@ -38,7 +38,7 @@
       defs += `<pattern id="${id}p" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 0 L4 4 M4 0 L0 4" stroke="#000" stroke-opacity=".14" stroke-width="1"/></pattern>`;
       tex = `<rect x="0" y="0" width="200" height="240" fill="url(#${id}p)"/>`;
     } else if (d.tela === "reciclada") {
-      const cols = ["#FF6B57", "#FFC53D", "#35C9A0", "#4B4BFF", "#FF9BD2", "#8B5CF6"];
+      const cols = ["#A63A26", "#C79A32", "#4F6B3A", "#36556E", "#C9A3A0", "#5B3A5C"];
       let k = 0;
       for (let y = 10; y < 240; y += 40) {
         for (let x = 10; x < 200; x += 40) {
@@ -64,7 +64,7 @@
       det += `<path d="M${x1} ${y} h24 v26 h-24 Z M${x2} ${y} h24 v26 h-24 Z" fill="${fg}" fill-opacity=".16" stroke="${fg}" stroke-width="2" stroke-dasharray="4 3"/>`;
     }
     if (has("botones")) {
-      const bc = lum(d.color) > 0.6 ? "#FF6B57" : "#FFC53D";
+      const bc = lum(d.color) > 0.6 ? "#A63A26" : "#D6B25C";
       let b = "";
       const ys = top ? [54, 84, 114, 144, 174] : t === "vestido" ? [34, 56, 78] : [30];
       ys.forEach((yy) => (b += `<circle cx="100" cy="${yy}" r="4.5" fill="${bc}" stroke="currentColor" stroke-width="2"/>`));
@@ -72,15 +72,22 @@
       det += b;
     }
     if (has("bordado")) {
-      const cx = top ? 128 : t === "vestido" ? 114 : 130;
-      const cy = top ? 78 : t === "vestido" ? 118 : 150;
-      det += `<g stroke="${fg}" stroke-width="2" stroke-linecap="round" fill="none"><circle cx="${cx}" cy="${cy}" r="3" fill="#FFC53D" stroke="none"/><path d="M${cx} ${cy - 6} v-7 M${cx} ${cy + 6} v7 M${cx - 6} ${cy} h-7 M${cx + 6} ${cy} h7 M${cx - 4} ${cy - 4} l-5 -5 M${cx + 4} ${cy + 4} l5 5 M${cx + 4} ${cy - 4} l5 -5 M${cx - 4} ${cy + 4} l-5 5"/></g>`;
+      const cx = top ? 76 : t === "vestido" ? 114 : 130;
+      const cy = top ? 74 : t === "vestido" ? 164 : 150;
+      det += `<g stroke="${fg}" stroke-width="2" stroke-linecap="round" fill="none"><circle cx="${cx}" cy="${cy}" r="3" fill="#D6B25C" stroke="none"/><path d="M${cx} ${cy - 6} v-7 M${cx} ${cy + 6} v7 M${cx - 6} ${cy} h-7 M${cx + 6} ${cy} h7 M${cx - 4} ${cy - 4} l-5 -5 M${cx + 4} ${cy + 4} l5 5 M${cx + 4} ${cy - 4} l5 -5 M${cx - 4} ${cy + 4} l-5 5"/></g>`;
     }
     if (has("parche")) {
       const px = top ? 66 : 70, py = top ? 156 : t === "pantalon" ? 130 : 150;
-      det += `<g transform="rotate(-6 ${px + 13} ${py + 13})"><rect x="${px}" y="${py}" width="28" height="28" rx="3" fill="#FF6B57" stroke="#1B1740" stroke-width="1.5" stroke-dasharray="3 2"/><rect x="${px + 7}" y="${py + 7}" width="14" height="14" rx="2" fill="#FFC53D"/></g>`;
+      det += `<g transform="rotate(-6 ${px + 13} ${py + 13})"><rect x="${px}" y="${py}" width="28" height="28" rx="3" fill="#A63A26" stroke="#0F0F0E" stroke-width="1.5" stroke-dasharray="3 2"/><rect x="${px + 7}" y="${py + 7}" width="14" height="14" rx="2" fill="#D6B25C"/></g>`;
     }
 
+    let frase = "";
+    if (d.frase) {
+      const txt = String(d.frase).toUpperCase().replace(/[&<>"']/g, "");
+      const fs = Math.max(8, Math.min(17, 150 / Math.max(6, txt.length)));
+      const pos = t === "pantalon" ? 'x="76" y="150" transform="rotate(-90 76 150)"' : t === "falda" ? 'x="100" y="132"' : t === "vestido" ? 'x="100" y="112"' : 'x="100" y="100"';
+      frase = `<text ${pos} text-anchor="middle" font-family="Archivo, Impact, sans-serif" font-weight="900" font-size="${fs.toFixed(1)}" letter-spacing=".5" fill="${fg}">${txt}</text>`;
+    }
     const hood = t === "buzo" ? `<ellipse cx="100" cy="30" rx="28" ry="20" fill="${d.color}" stroke="currentColor" stroke-width="3"/>` : "";
     const neck = top || t === "vestido" ? `<path d="M86 18 Q100 36 114 18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>` : "";
     const label = o.label === false ? "" : ` role="img" aria-label="Vista previa: ${R.nombrePrenda(d)}"`;
@@ -88,7 +95,7 @@
       `<svg viewBox="0 0 200 240" class="garment"${label} xmlns="http://www.w3.org/2000/svg"><defs>${defs}</defs>` +
       `<g transform="translate(100 120) scale(${sx} ${sy}) translate(-100 -120)">${hood}` +
       `<path d="${path}" fill="${d.color}" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>` +
-      `<g clip-path="url(#${id}c)">${tex}</g>${det}${t === "buzo" ? "" : neck}</g></svg>`
+      `<g clip-path="url(#${id}c)">${tex}</g>${det}${frase}${t === "buzo" ? "" : neck}</g></svg>`
     );
   };
 })();

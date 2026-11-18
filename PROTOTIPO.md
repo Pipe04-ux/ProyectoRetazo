@@ -129,3 +129,7 @@ Cada cambio de estado actualiza el [Seguimiento] del cliente.
 4. **Repositorio y código:** ramas, Pull Requests y GitHub Pages.
 
 Todos participan en el código; cada quien trabaja en su rama (`feat/...`, `fix/...`) y se une con Pull Request.
+
+
+## Actualización visual v0.3
+Look contracultural (fanzine / collage), paleta apagada, contraste AA verificado y nueva opción de frase estampada en el diseñador (+$10.000). El flujo y las pantallas no cambian.

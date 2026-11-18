@@ -1,9 +1,11 @@
-# Retazo  — Moda a la medida, justa y sostenible
+# Retazo (nombre temporal) — Moda a la medida, justa y sostenible
 
 > Marketplace virtual de moda donde el cliente diseña lo que imagina, el artesano trabaja con autonomía y el material sobrante se recupera en lugar de desecharse.
 
-**Estado:** Paso 4 de 4 — Prototipo funcional (v0.2)
-**Equipo:** (nombres de los 4 integrantes)
+**Estado:** Paso 4 de 4 — Prototipo funcional (v0.3)
+**Demo en vivo:** https://pipe04-ux.github.io/ProyectoRetazo/
+**Repositorio:** https://github.com/pipe04-ux/ProyectoRetazo
+**Equipo:** Santiago Rodríguez, David Fonseca, Felipe Pinilla y Lucy Lizeth
 
 ---
 
@@ -83,7 +85,8 @@ Prototipo rápido (MVP) → Prueba de usabilidad con usuarios (método "pensar e
 - Una rama por tarea o persona: `feat/nombre-tarea`.
 - Commits cortos y claros: `feat: agrega pantalla de diseño`.
 - Pull Request revisado por al menos otro integrante antes de unir a `main`.
-- Issues y tablero (Projects) para repartir las tareas de los 4 integrantes.
+- Issues y tablero (Projects) para repartir las tareas de los 4 integrantes (lista inicial en [docs/BACKLOG.md](docs/BACKLOG.md)).
+- Guía completa del flujo: [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## 10. Requisitos técnicos
 
@@ -99,15 +102,22 @@ Prototipo rápido (MVP) → Prueba de usabilidad con usuarios (método "pensar e
 │   ├── data.js         # Datos de ejemplo, precios y estado compartido (localStorage)
 │   ├── garment.js      # Dibujo SVG de la prenda según el diseño
 │   └── app.js          # Rutas, pantallas y acciones
-├── docs/               # Guion de pruebas de usabilidad y registro de fallos
+├── docs/
+│   ├── ARQUITECTURA.md # Cómo está hecho el código
+│   ├── DISENO.md       # Colores, tipografías y contraste
+│   ├── PRUEBAS.md      # Guion de pruebas de usabilidad y registro de fallos
+│   └── BACKLOG.md      # Tareas pendientes para crear como Issues
+├── .github/            # Plantillas de Issues y Pull Requests
 ├── PROTOTIPO.md        # Pasos 2, 3 y 4
 ├── CHANGELOG.md        # Qué cambió en cada versión
+├── CONTRIBUTING.md     # Cómo trabajamos en equipo
+├── LICENSE             # Licencia MIT
 └── README.md
 ```
 
 ## 11. Prototipo funcional
 
-**Cómo verlo:** abre `index.html` en el navegador, o publícalo con GitHub Pages (Settings → Pages → rama `main`, carpeta raíz) y comparte el enlace o su código QR.
+**Cómo verlo:** abre `index.html` en el navegador, o publícalo con GitHub Pages (Settings → Pages → rama `main`, carpeta `/ (root)`) y comparte el enlace o su código QR.
 
 **Qué hace:**
 - **Cliente (11 pantallas):** inicio, cuenta, diseñador con vista previa en vivo, elección de artesano, datos de envío, resumen, pago (tarjeta, PSE o Nequi), recibo, seguimiento con guía, recolección de retazos y mis pedidos.
@@ -125,6 +135,6 @@ Prototipo rápido (MVP) → Prueba de usabilidad con usuarios (método "pensar e
 6. Si el cliente entrega retazos, no está obligado a pasar por la pantalla de recolección: puede programarla después desde el seguimiento.
 7. El cambio de estado del artesano actualiza el seguimiento del cliente.
 
-**Diseño:** concepto de colcha de retazos (parches de colores, bordes con puntada y un hilo que une los pasos del pedido). Tipografías Bricolage Grotesque y Figtree, modo claro y oscuro automáticos, y animaciones que respetan la preferencia de movimiento reducido.
+**Diseño (v0.3):** enfoque contracultural tipo fanzine y collage de pared: bordes gruesos, sombras duras, textura de papel, cintas adhesivas y sellos de máquina de escribir. Paleta apagada y terrosa con contraste verificado (texto 13–17:1, secundario ≥ 6,8:1, todo AA). Tipografías Archivo, Work Sans y Special Elite. Modo claro y oscuro automáticos y animaciones que respetan la preferencia de movimiento reducido. El diseñador permite además una frase estampada opcional (+$10.000).
 
 **Limitaciones conocidas (para la siguiente iteración):** no hay servidor ni pago real; los datos viven en el navegador de cada persona; no hay chat entre cliente y artesano ni mapa de puntos de recolección.

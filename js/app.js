@@ -26,7 +26,7 @@
   /* ---------- Estado de interfaz (no se guarda) ---------- */
   const UI = {
     loginTab: "in",
-    heroColor: "#FF6B57",
+    heroColor: "#A63A26",
     errors: {},
     pay: { metodo: "Tarjeta", status: "idle", msg: "", v: { num: "", nombre: "", exp: "", cvv: "", tel: "", banco: "" } },
     stars: 0,
@@ -89,15 +89,17 @@
   /* ---------- Cliente: Inicio ---------- */
   function vInicio() {
     const d = Object.assign(R.defaultDraft(), { tipo: "camisa", tela: "lino", color: UI.heroColor, detalles: ["bolsillos", "botones", "parche"] });
-    const sw = ["#FF6B57", "#FFC53D", "#35C9A0", "#4B4BFF", "#FF9BD2", "#8B5CF6"];
+    const sw = R.COLORES.slice(0, 6).map((c) => c[1]);
     return `<section class="hero">
       <div>
-        <h1>Tu ropa, cosida a tu medida por <em>manos de tu barrio</em>.</h1>
-        <p class="lead">Dibuja la prenda que ya tienes en la cabeza. Un artesano la confecciona, fija su propio precio y tus retazos viejos vuelven a ser tela.</p>
+        <span class="stamp">Sin stock · solo bajo pedido</span>
+        <h1 style="margin-top:20px">Tu ropa.<br>Tus reglas.<br><span class="hl">Manos reales.</span></h1>
+        <p class="lead">Dibuja la prenda que ya tienes en la cabeza. Un artesano de tu ciudad la cose a tu medida, fija su propio precio y tus retazos viejos vuelven a ser tela.</p>
         <div class="row"><button class="btn primary" data-a="start">Diseña tu prenda</button><a class="btn" href="#a-panel">Soy artesano</a></div>
       </div>
-      <div class="stage"><div class="bg b1"></div><div class="bg b2"></div><div class="bg b3"></div><div class="bg b4"></div>
-        <div class="paper" id="heroG">${R.garment(d, { label: false })}</div>
+      <div class="stage"><div class="bg b1"></div><div class="bg b2"></div><div class="bg b3"></div>
+        <div class="paper tape" id="heroG">${R.garment(d, { label: false })}</div>
+        <span class="stamp note">prueba un color</span>
         <div class="sw" role="group" aria-label="Probar un color">${sw.map((c) => `<button data-a="heroColor" data-v="${c}" style="background:${c}" aria-label="Color ${c}" aria-pressed="${c === UI.heroColor}"></button>`).join("")}</div>
       </div>
     </section>
@@ -156,6 +158,7 @@
         <section class="opt"><h3>Color</h3><div class="swatches">${R.COLORES.map((c) => `<button data-a="pickColor" data-v="${c[1]}" style="background:${c[1]}" aria-label="${c[0]}" title="${c[0]}" aria-pressed="${d.color === c[1]}"></button>`).join("")}</div></section>
         <section class="opt"><h3>Tus medidas</h3>${range("pecho", "Pecho", 80, 130)}${range("cintura", "Cintura", 60, 120)}${range("largo", "Largo", 50, 110)}</section>
         <section class="opt"><h3>Detalles</h3><div class="chips">${R.DETALLES.map((x) => `<button class="chip" data-a="toggleDet" data-v="${x.id}" aria-pressed="${d.detalles.includes(x.id)}">${x.n} <span class="muted small">+${R.cop(x.p)}</span></button>`).join("")}</div></section>
+        <section class="opt field"><label for="frase">Tu frase estampada (opcional) <span class="muted small">+${R.cop(10000)}</span></label><input class="input" id="frase" maxlength="18" data-in="frase" value="${esc(d.frase)}" placeholder="Ej.: HECHO EN MI BARRIO" autocomplete="off"></section>
         <section class="opt field"><label for="nota">Notas para el artesano</label><textarea class="input" id="nota" data-in="nota" placeholder="Ej.: manga larga, que no quede ajustada.">${esc(d.nota)}</textarea></section>
       </div>
     </div>
@@ -212,7 +215,7 @@
     ${head("Revisa tu pedido", "Todavía no se cobra nada. El pago es el siguiente paso.")}
     <div class="two"><div class="stack">
       <section class="card"><div class="row sp"><h3>Tu prenda</h3><a class="btn sm" href="#disenar">${ico("edit", 16)} Editar diseño</a></div>
-        <div class="minirow" style="margin-top:12px">${mini(s.draft)}<div style="flex:1;min-width:0"><b>${esc(R.nombrePrenda(s.draft))}</b><div class="small muted">Pecho ${s.draft.medidas.pecho} · Cintura ${s.draft.medidas.cintura} · Largo ${s.draft.medidas.largo} cm</div><div class="small muted">${s.draft.detalles.length ? s.draft.detalles.map((x) => R.DETALLES.find((d) => d.id === x).n).join(", ") : "Sin detalles extra"}</div></div></div>
+        <div class="minirow" style="margin-top:12px">${mini(s.draft)}<div style="flex:1;min-width:0"><b>${esc(R.nombrePrenda(s.draft))}</b><div class="small muted">Pecho ${s.draft.medidas.pecho} · Cintura ${s.draft.medidas.cintura} · Largo ${s.draft.medidas.largo} cm</div><div class="small muted">${R.detallesTxt(s.draft).join(", ") || "Sin detalles extra"}</div></div></div>
         ${s.draft.nota ? `<p class="small" style="margin-top:10px"><b>Nota:</b> ${esc(s.draft.nota)}</p>` : ""}</section>
       <section class="card"><div class="row sp"><h3>Artesano</h3><a class="btn sm" href="#artesanos">Cambiar</a></div>
         <div class="row" style="margin-top:12px"><div class="avatar" style="background:${art.color};width:44px;height:44px;border-radius:14px">${initial(art.taller)}</div><div><b>${esc(art.taller)}</b><div class="small muted">${stars(art.rating)} ${art.rating.toFixed(1)} · plazo ${art.plazo} días</div></div></div></section>
@@ -271,7 +274,7 @@
     if (!o) return empty("Aún no tienes un recibo", "Cuando pagues un pedido aparecerá aquí.", "Diseñar una prenda", "disenar");
     const art = R.artisan(o.artesanoId);
     return `<div class="stack" style="max-width:560px;margin-inline:auto"><div style="text-align:center;display:grid;gap:10px"><div class="okmark"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></div><h2>¡Pedido confirmado!</h2><p class="muted">Te enviamos este recibo a tu correo.</p></div>
-    <div class="receipt"><div class="line"><span class="muted">Pedido</span><b>#${o.id}</b></div><div class="line"><span class="muted">Fecha</span><span>${R.fechaLarga(o.ts)}</span></div><hr>
+    <div class="receipt"><span class="stamp paid">PAGADO</span><div class="line"><span class="muted">Pedido</span><b>#${o.id}</b></div><div class="line"><span class="muted">Fecha</span><span>${R.fechaLarga(o.ts)}</span></div><hr>
       <div class="line"><span>${esc(R.nombrePrenda(o.diseno))}</span><span class="tnum">${R.cop(o.precio)}</span></div><div class="small muted">Confecciona: ${esc(art.taller)}${o.retazos.on ? " · retazos por entregar" : ""}</div>
       <div class="line"><span>Envío</span><span class="tnum">${R.cop(o.envio)}</span></div>${o.desc ? `<div class="line disc"><span>Descuento por retazos</span><span class="tnum">− ${R.cop(o.desc)}</span></div>` : ""}
       <div class="line total"><span>Total pagado</span><span class="tnum">${R.cop(o.total)}</span></div><hr>
@@ -401,7 +404,7 @@
   function newOrderCard(o) {
     const me = R.me();
     return `<article class="card pop neworder"><div class="pv">${R.garment(o.diseno, { label: false })}</div><div class="stack" style="gap:10px"><div class="row sp"><div><b>${esc(R.nombrePrenda(o.diseno))}</b><div class="small muted">#${o.id} · ${esc(o.cliente)} · ${esc(o.ciudad)}</div></div><span class="price tnum">${R.cop(o.precio)}</span></div>
-      <div class="small">Pecho ${o.diseno.medidas.pecho} · Cintura ${o.diseno.medidas.cintura} · Largo ${o.diseno.medidas.largo} cm${o.diseno.detalles.length ? " · " + o.diseno.detalles.map((x) => R.DETALLES.find((d) => d.id === x).n).join(", ") : ""}</div>
+      <div class="small">Pecho ${o.diseno.medidas.pecho} · Cintura ${o.diseno.medidas.cintura} · Largo ${o.diseno.medidas.largo} cm${R.detallesTxt(o.diseno).length ? " · " + R.detallesTxt(o.diseno).join(", ") : ""}</div>
       ${o.diseno.nota ? `<div class="small"><b>Nota:</b> ${esc(o.diseno.nota)}</div>` : ""}${o.retazos.on ? `<div class="badge entregado">Entregará ${esc(o.retazos.tipo.toLowerCase())} (${o.retazos.kg} kg)</div>` : ""}
       <div class="row"><div class="field" style="width:130px"><label for="pz-${o.id}">Tu plazo (días)</label><input class="input" id="pz-${o.id}" type="number" min="1" max="30" value="${me.plazo}"></div><div class="row" style="margin-top:22px"><button class="btn primary" data-a="aceptar" data-id="${o.id}">Aceptar pedido</button><button class="btn danger sm" data-a="rechazar" data-id="${o.id}">Rechazar</button></div></div></div></article>`;
   }
@@ -430,7 +433,7 @@
     return `${back("a-pedidos", "Pedidos")}
     <div class="row sp" style="margin-bottom:16px"><div><h2>Pedido ${o.id}</h2><p class="muted">${esc(o.cliente)} · ${esc(o.ciudad)}</p></div>${badge(o.estado)}</div>
     <div class="two"><div class="stack">
-      <section class="card neworder"><div class="pv">${R.garment(o.diseno, { label: false })}</div><div class="stack" style="gap:8px"><b>${esc(R.nombrePrenda(o.diseno))}</b><div class="small">Pecho ${o.diseno.medidas.pecho} · Cintura ${o.diseno.medidas.cintura} · Largo ${o.diseno.medidas.largo} cm</div><div class="small">${o.diseno.detalles.length ? o.diseno.detalles.map((x) => R.DETALLES.find((d) => d.id === x).n).join(", ") : "Sin detalles extra"}</div>${o.diseno.nota ? `<div class="small"><b>Nota:</b> ${esc(o.diseno.nota)}</div>` : ""}${o.retazos.on ? `<span class="badge entregado">Retazos: ${esc(o.retazos.tipo)} · ${o.retazos.kg} kg${o.retazos.programado ? " · programado" : ""}</span>` : ""}<div class="small muted">Entrega en ${esc(o.direccion)}, ${esc(o.barrio)}, ${esc(o.ciudad)}</div><div class="price tnum">${R.cop(o.precio)}</div></div></section>
+      <section class="card neworder"><div class="pv">${R.garment(o.diseno, { label: false })}</div><div class="stack" style="gap:8px"><b>${esc(R.nombrePrenda(o.diseno))}</b><div class="small">Pecho ${o.diseno.medidas.pecho} · Cintura ${o.diseno.medidas.cintura} · Largo ${o.diseno.medidas.largo} cm</div><div class="small">${R.detallesTxt(o.diseno).join(", ") || "Sin detalles extra"}</div>${o.diseno.nota ? `<div class="small"><b>Nota:</b> ${esc(o.diseno.nota)}</div>` : ""}${o.retazos.on ? `<span class="badge entregado">Retazos: ${esc(o.retazos.tipo)} · ${o.retazos.kg} kg${o.retazos.programado ? " · programado" : ""}</span>` : ""}<div class="small muted">Entrega en ${esc(o.direccion)}, ${esc(o.barrio)}, ${esc(o.ciudad)}</div><div class="price tnum">${R.cop(o.precio)}</div></div></section>
       ${action ? `<section class="card pop stack"><h3>Siguiente paso</h3>${action}</section>` : ""}
       ${o.review ? `<section class="card"><h3>Calificación del cliente</h3><p>${stars(o.review.stars)}</p><p class="muted">${esc(o.review.texto)}</p></section>` : ""}</div>
       <aside class="side stack">${g}<div class="card"><h3 style="margin-bottom:12px">Historial</h3><ol class="tl">${o.hist.map((h) => `<li class="done"><div class="pt">${ico("check", 14)}</div><div><div class="tt">${R.ESTADOS.find((x) => x.id === h.e) ? R.ESTADOS.find((x) => x.id === h.e).n : "Rechazado"}</div><div class="small muted">${R.fecha(h.t)}</div></div></li>`).join("")}</ol></div>
@@ -490,6 +493,11 @@
     "a-taller": { v: vATaller, role: "artesano" },
   };
 
+  function ticker() {
+    const L = ["Hecho a mano", "Sin stock", "Solo bajo pedido", "El artesano fija su precio", "Los retazos vuelven a ser tela"];
+    const half = [...L, ...L].map((t) => `<span>${t}</span>`).join("");
+    return `<div class="ticker" aria-hidden="true"><div class="tk">${half}${half}</div></div>`;
+  }
   let lastRoute = null;
   function render(anim) {
     const s = S();
@@ -506,7 +514,7 @@
     const inner = r.v();
     const body = isA ? ashell(name, inner) : inner;
     const fresh = anim !== false && lastRoute !== name;
-    root.innerHTML = `${header(name)}<div class="wrap"><main id="main"><div class="view" ${fresh ? "" : 'style="animation:none"'}>${body}</div></main></div>${isA ? "" : footer()}<div class="toasts" id="toasts" role="status" aria-live="polite"></div>`;
+    root.innerHTML = `${header(name)}${name === "inicio" ? ticker() : ""}<div class="wrap"><main id="main"><div class="view" ${fresh ? "" : 'style="animation:none"'}>${body}</div></main></div>${isA ? "" : footer()}<div class="toasts" id="toasts" role="status" aria-live="polite"></div>`;
     document.body.classList.toggle("has-tabs", isA);
     document.title = "Retazo · " + ({ inicio: "Moda a la medida", login: "Ingresar", disenar: "Diseñar", artesanos: "Artesanos", envio: "Envío", resumen: "Resumen", pago: "Pago", recibo: "Recibo", seguimiento: "Seguimiento", recoleccion: "Retazos", pedidos: "Mis pedidos" }[name] || "Taller");
     if (fresh) window.scrollTo(0, 0); else window.scrollTo(0, y);
@@ -517,7 +525,7 @@
     if (reduced) return;
     const c = document.createElement("div");
     c.className = "confetti";
-    const cols = ["#FF6B57", "#FFC53D", "#35C9A0", "#4B4BFF", "#FF9BD2", "#8B5CF6"];
+    const cols = ["#A63A26", "#C79A32", "#4F6B3A", "#36556E", "#C9A3A0", "#5B3A5C"];
     for (let i = 0; i < 46; i++) {
       const p = document.createElement("i");
       p.style.left = Math.random() * 100 + "%";
@@ -606,6 +614,12 @@
       R.save();
     },
     nota: (el) => { S().draft.nota = el.value; R.save(); },
+    frase: (el) => {
+      S().draft.frase = el.value.toUpperCase().replace(/[<>&"']/g, "");
+      const b = document.getElementById("pvBox");
+      if (b) b.innerHTML = previewBox();
+      R.save();
+    },
     pf: (el) => {
       const k = el.dataset.k;
       let v = el.value;
