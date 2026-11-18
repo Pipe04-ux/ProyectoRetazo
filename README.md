@@ -138,3 +138,14 @@ Prototipo rápido (MVP) → Prueba de usabilidad con usuarios (método "pensar e
 **Diseño (v0.3):** enfoque contracultural tipo fanzine y collage de pared: bordes gruesos, sombras duras, textura de papel, cintas adhesivas y sellos de máquina de escribir. Paleta apagada y terrosa con contraste verificado (texto 13–17:1, secundario ≥ 6,8:1, todo AA). Tipografías Archivo, Work Sans y Special Elite. Modo claro y oscuro automáticos y animaciones que respetan la preferencia de movimiento reducido. El diseñador permite además una frase estampada opcional (+$10.000).
 
 **Limitaciones conocidas (para la siguiente iteración):** no hay servidor ni pago real; los datos viven en el navegador de cada persona; no hay chat entre cliente y artesano ni mapa de puntos de recolección.
+## Capturas de pantalla
+
+Video demostrativo del flujo completo: [Ver demo en video]([COMPLETAR: ENLACE DEL VIDEO])
+
+| Vista | Captura | Descripción |
+| :--- | :---: | :--- |
+| **Personalizador de prenda** | ![Personalizador]([COMPLETAR: ruta/archivo captura 1]) | Selección de tipo de prenda, tela, color, medidas, detalles y frase estampada. |
+| **Selección de artesano** | ![Artesanos]([COMPLETAR: ruta/archivo captura 2]) | Listado de artesanos autónomos con tarifas y tiempos de entrega estimados. |
+| **Envío y pasarela de pago** | ![Pago]([COMPLETAR: ruta/archivo captura 3]) | Formulario de envío y validación de pago simulado (rechazo y aprobación). |
+| **Panel de artesano y guía** | ![Panel Artesano]([COMPLETAR: ruta/archivo captura 4]) | Gestión de pedidos recibidos, aceptación y asignación de número de guía. |
+| **Seguimiento y retazos** | ![Seguimiento]([COMPLETAR: ruta/archivo captura 5]) | Consulta del estado del pedido por el cliente y módulo de recolección de retazos. |
