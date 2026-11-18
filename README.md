@@ -140,7 +140,9 @@ Prototipo rápido (MVP) → Prueba de usabilidad con usuarios (método "pensar e
 **Limitaciones conocidas (para la siguiente iteración):** no hay servidor ni pago real; los datos viven en el navegador de cada persona; no hay chat entre cliente y artesano ni mapa de puntos de recolección.
 ## Capturas de pantalla
 
-Video demostrativo del flujo completo: [Ver demo en video]([COMPLETAR: ENLACE DEL VIDEO])
+Video demostrativo del flujo completo cliente: [Ver demo en video]((https://youtu.be/5PUhx1c3FQg))
+Video demostrativo del flujo completo: [Ver demo en video]((https://youtu.be/8J1MvUbCzJk))
+
 
 | Vista | Captura | Descripción |
 | :--- | :---: | :--- |
