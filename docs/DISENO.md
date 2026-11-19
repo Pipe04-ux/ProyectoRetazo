@@ -31,3 +31,6 @@ Bordes de 3 a 4 px, sombra dura desplazada sin difuminar, esquinas rectas, textu
 - Sin animaciones si la persona activó "reducir movimiento".
 - Botones de al menos 44 px de alto en celular.
 - Sin scroll horizontal a 390 px de ancho.
+
+## Prendas (v0.4)
+Cada prenda se dibuja en SVG con sombra suave, volumen por degradado, pliegues difuminados y una textura según la tela. Los detalles (cuello, botones, bolsillos, bordado, parche y frase) cambian de posición y forma según el tipo de prenda. Los colores de contraste se eligen según la luminosidad del color base.

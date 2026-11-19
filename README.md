@@ -1,11 +1,11 @@
-# Retazo  — Moda a la medida, justa y sostenible
+# Retazo (nombre temporal) — Moda a la medida, justa y sostenible
 
 > Marketplace virtual de moda donde el cliente diseña lo que imagina, el artesano trabaja con autonomía y el material sobrante se recupera en lugar de desecharse.
 
-**Estado:** Paso 4 de 4 — Prototipo funcional (v0.3)
+**Estado:** Paso 4 de 4 — Prototipo funcional (v0.4)
 **Demo en vivo:** https://pipe04-ux.github.io/ProyectoRetazo/
 **Repositorio:** https://github.com/pipe04-ux/ProyectoRetazo
-**Equipo:** Santiago Rodríguez, David Fonseca, Felipe Pinilla y Lucy Lizeth
+**Equipo:** Santiago Rodriguez, David Fonseca, Felipe Pinilla y Lucy Lizeth Rodriguez
 
 ---
 
@@ -105,6 +105,8 @@ Prototipo rápido (MVP) → Prueba de usabilidad con usuarios (método "pensar e
 ├── docs/
 │   ├── ARQUITECTURA.md # Cómo está hecho el código
 │   ├── DISENO.md       # Colores, tipografías y contraste
+│   ├── CAMBIOS.md      # De la cartelera al prototipo funcional, todos los cambios
+│   ├── EXPOSICION.md   # Guía de la exposición, demo y preguntas
 │   ├── PRUEBAS.md      # Guion de pruebas de usabilidad y registro de fallos
 │   └── BACKLOG.md      # Tareas pendientes para crear como Issues
 ├── .github/            # Plantillas de Issues y Pull Requests
@@ -135,18 +137,6 @@ Prototipo rápido (MVP) → Prueba de usabilidad con usuarios (método "pensar e
 6. Si el cliente entrega retazos, no está obligado a pasar por la pantalla de recolección: puede programarla después desde el seguimiento.
 7. El cambio de estado del artesano actualiza el seguimiento del cliente.
 
-**Diseño (v0.3):** enfoque contracultural tipo fanzine y collage de pared: bordes gruesos, sombras duras, textura de papel, cintas adhesivas y sellos de máquina de escribir. Paleta apagada y terrosa con contraste verificado (texto 13–17:1, secundario ≥ 6,8:1, todo AA). Tipografías Archivo, Work Sans y Special Elite. Modo claro y oscuro automáticos y animaciones que respetan la preferencia de movimiento reducido. El diseñador permite además una frase estampada opcional (+$10.000).
+**Diseño (v0.3 y v0.4):** enfoque contracultural tipo fanzine y collage de pared: bordes gruesos, sombras duras, textura de papel, cintas adhesivas y sellos de máquina de escribir. Paleta apagada y terrosa con contraste verificado (texto 13–17:1, secundario ≥ 6,8:1, todo AA). Tipografías Archivo, Work Sans y Special Elite. Modo claro y oscuro automáticos y animaciones que respetan la preferencia de movimiento reducido. El diseñador permite además una frase estampada opcional (+$10.000). En v0.4 las prendas se dibujan con costuras, cuellos y mangas con forma, pliegues, sombra suave y texturas de tela más realistas. La lista completa de cambios frente a la cartelera está en [docs/CAMBIOS.md](docs/CAMBIOS.md) y la guía de la exposición en [docs/EXPOSICION.md](docs/EXPOSICION.md).
 
 **Limitaciones conocidas (para la siguiente iteración):** no hay servidor ni pago real; los datos viven en el navegador de cada persona; no hay chat entre cliente y artesano ni mapa de puntos de recolección.
-## Capturas de pantalla
-Video demostrativo del cliente: [Ver demo en video](https://youtu.be/5PUhx1c3FQg)
-Video demostrativo del artesano: [Ver demo en video](https://youtu.be/8J1MvUbCzJk)
-
-
-
-| Vista | Captura | Descripción |
-| :--- | :---: | :--- |
-| **Personalizador de prenda** | ![Personalizador](Screenshot 2026-11-18 145109.png) | Selección de tipo de prenda, tela, color, medidas, detalles y frase estampada. |
-| **Selección de artesano** | ![Artesanos](Screenshot 2026-11-18 145142.png) | Listado de artesanos autónomos con tarifas y tiempos de entrega estimados. |
-| **Envío y pasarela de pago** | (!Screenshot 2026-11-18 145207.png ) | Formulario de envío y validación de pago simulado (rechazo y aprobación). |
-| **Panel de artesano y guía** | ![Panel Artesano](Screenshot 2026-11-18 145228.png) | Gestión de pedidos recibidos, aceptación y asignación de número de guía. |

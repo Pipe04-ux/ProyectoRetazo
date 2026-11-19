@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.4 — Prendas más realistas
+- Las 6 prendas se redibujan con costuras, cuellos y mangas con forma, pliegues, sombra suave y volumen.
+- Texturas de tela nuevas: algodón de punto, lino con hebras, dril en diagonal y tela reciclada con retazos cosidos.
+- Botones, bolsillos, bordado, parche, cuello especial y frase estampada ajustados a cada prenda.
+- Nuevos documentos: `docs/CAMBIOS.md` (de la cartelera al funcional) y `docs/EXPOSICION.md` (guía de la exposición).
+
 ## v0.3 — Look contracultural y más contraste
 - Nuevo enfoque visual tipo fanzine / collage de pared: bordes gruesos, sombras duras sin degradados, textura de papel, cintas adhesivas, sellos de máquina de escribir y una cinta de texto que se desplaza en el inicio.
 - Paleta apagada y terrosa (pizarra, óxido, ocre, musgo, rosa polvo, ciruela, tinta, crudo) en lugar de colores saturados.

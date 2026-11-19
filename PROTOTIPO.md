@@ -80,7 +80,7 @@ Se le dan tareas, no instrucciones de dónde hacer clic:
 
 ## Paso 4 — Prototipo funcional (con los cambios)
 
-**Estado: construido (v0.2).** Es una aplicación HTML, CSS y JavaScript, responsive (móvil primero), sin servidor. Los datos de ejemplo se guardan en `localStorage`. Se publica con **GitHub Pages**.
+**Estado: construido (v0.4).** Es una aplicación HTML, CSS y JavaScript, responsive (móvil primero), sin servidor. Los datos de ejemplo se guardan en `localStorage`. Se publica con **GitHub Pages**.
 
 ### Mapa de pantallas
 
@@ -133,3 +133,7 @@ Todos participan en el código; cada quien trabaja en su rama (`feat/...`, `fix/
 
 ## Actualización visual v0.3
 Look contracultural (fanzine / collage), paleta apagada, contraste AA verificado y nueva opción de frase estampada en el diseñador (+$10.000). El flujo y las pantallas no cambian.
+
+
+## Actualización visual v0.4
+Prendas dibujadas con más realismo (costuras, cuellos, pliegues, sombra y texturas de tela). Todos los cambios frente a la cartelera están en [docs/CAMBIOS.md](docs/CAMBIOS.md).
